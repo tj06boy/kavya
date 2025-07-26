@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavya's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --futuristic-font: 'Orbitron', sans-serif;
+            --secondary-font: 'Rajdhani', sans-serif;
+            --primary-color: #00f0ff;
+            --secondary-color: #ff00f0;
+            --dark-color: #0a0a20;
+            --light-color: #f0f0f0;
+            --container-width: 1200px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--secondary-font), sans-serif;
+            line-height: 1.6;
+            color: var(--light-color);
+            background: 
+                linear-gradient(rgba(10, 10, 32, 0.85), rgba(10, 10, 32, 0.85)),
+                url('pngtree-futuristic-display-stand-with-neon-glow-image_16736314.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(10, 10, 32, 0.7);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 240, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--futuristic-font), sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links li a {
+            font-family: var(--futuristic-font), sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .futuristic-heading {
+            font-family: var(--futuristic-font), sans-serif;
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin: 2rem 0 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-family: var(--futuristic-font), sans-serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .icon-placeholder {
+            font-size: clamp(5rem, 15vw, 10rem);
+            color: var(--primary-color);
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+            position: relative;
+            background-color: rgba(10, 10, 32, 0.7);
+            backdrop-filter: blur(8px);
+            margin: 3rem 0;
+            border-top: 1px solid rgba(0, 240, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+        }
+
+        .section-title {
+            font-family: var(--futuristic-font), sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            background-color: rgba(0, 0, 20, 0.5);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+        }
+
+        .about-text h3 {
+            font-family: var(--futuristic-font);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Skills Section */
+        .skills-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-tag {
+            background-color: rgba(0, 240, 255, 0.15);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 240, 255, 0.4);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.1);
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-5px);
+            background-color: rgba(0, 240, 255, 0.25);
+            box-shadow: 0 8px 25px rgba(0, 240, 255, 0.2);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background-color: rgba(0, 0, 20, 0.5);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: var(--futuristic-font);
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            background-color: rgba(0, 240, 255, 0.05);
+            color: var(--light-color);
+            font-family: var(--secondary-font);
+            transition: var(--transition);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--dark-color);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-family: var(--futuristic-font);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(10, 10, 32, 0.9);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 240, 255, 0.3);
+            margin-top: 3rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px var(--primary-color),
+                             0 0 10px rgba(255, 0, 240, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px var(--secondary-color),
+                             0 0 30px var(--primary-color),
+                             0 0 40px rgba(255, 0, 240, 0.5);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content,
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .hero-text,
+            .about-text,
+            .contact-info {
+                text-align: center;
+            }
+            
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--dark-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .skill-tags {
+                justify-content: center;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Kavya's <span>Portfolio</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="container">
+            <div class="futuristic-heading">FUTURISM</div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm <span>Kavya</span></h1>
+                    <p>A passionate engineering student at IHRD College of Engineering, Kalloopara, exploring the exciting world of technology and innovation.</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/public-profile/settings" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/akyav" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:kavya645gotoschool@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="icon-placeholder">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>My Journey</h3>
+                    <p>I'm currently pursuing my engineering degree with a passion for technology and problem-solving. My journey in programming began with Python, C, and C++, and I've since expanded into web development.</p>
+                    <p>What started as simple "useless projects" (as I like to call them) has evolved into creating meaningful solutions. I began web development at 19 during a college event, and since then I've attended numerous workshops that have helped shape my skills.</p>
+                    <p>I believe in the power of curiosity and continuous learning to transform simple ideas into impactful projects.</p>
+                </div>
+                <div class="about-image">
+                    <div class="icon-placeholder">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills & Interests</h2>
+            <div class="skills-content">
+                <div class="skills-column">
+                    <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C Programming</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Problem Solving</span>
+                    </div>
+                </div>
+                <div class="skills-column">
+                    <h3><i class="fas fa-lightbulb"></i> Personal Strengths</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Creative Thinking</span>
+                        <span class="skill-tag">Observant</span>
+                        <span class="skill-tag">Curious Learner</span>
+                        <span class="skill-tag">Detail-Oriented</span>
+                    </div>
+                </div>
+                <div class="skills-column">
+                    <h3><i class="fas fa-rocket"></i> Fields to Explore</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Robotics</span>
+                        <span class="skill-tag">Aerospace Engineering</span>
+                        <span class="skill-tag">Cyber Security</span>
+                        <span class="skill-tag">AI/ML</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's connect!</h3>
+                    <p>I'm always open to discussing new opportunities, collaborations, or just chatting about technology and ideas.</p>
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <span>kavya645gotoschool@gmail.com</span>
+                        </div>
+                        <div>
+                            <i class="fab fa-linkedin"></i>
+                            <span>linkedin.com/public-profile/settings</span>
+                        </div>
+                        <div>
+                            <i class="fab fa-github"></i>
+                            <span>github.com/akyav</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-university"></i>
+                            <span>IHRD College of Engineering, Kalloopara</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/public-profile/settings" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/akyav" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:kavya645gotoschool@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2023 Kavya's Portfolio. All rights reserved.</p>
+            <p>Created with <i class="fas fa-heart" style="color: #e74c3c;"></i> by Kavya</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
